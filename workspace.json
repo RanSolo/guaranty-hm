@@ -1,0 +1,60 @@
+{
+  "version": 2,
+  "projects": {
+    "loan-lock-pdf-generator": {
+      "root": "apps/loan-lock-pdf-generator",
+      "sourceRoot": "apps/loan-lock-pdf-generator/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/loan-lock-pdf-generator",
+            "main": "apps/loan-lock-pdf-generator/src/main.ts",
+            "tsConfig": "apps/loan-lock-pdf-generator/tsconfig.app.json",
+            "assets": ["apps/loan-lock-pdf-generator/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/loan-lock-pdf-generator/src/environments/environment.ts",
+                  "with": "apps/loan-lock-pdf-generator/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "loan-lock-pdf-generator:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/loan-lock-pdf-generator/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/loan-lock-pdf-generator"],
+          "options": {
+            "jestConfig": "apps/loan-lock-pdf-generator/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/express"
+  },
+  "defaultProject": "loan-lock-pdf-generator"
+}
