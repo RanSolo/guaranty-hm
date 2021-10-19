@@ -57,25 +57,6 @@
       "sourceRoot": "libs/loan-lock-pdf-template/src",
       "projectType": "library",
       "targets": {
-        "build": {
-          "executor": "@nrwl/web:package",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/libs/loan-lock-pdf-template",
-            "tsConfig": "libs/loan-lock-pdf-template/tsconfig.lib.json",
-            "project": "libs/loan-lock-pdf-template/package.json",
-            "entryFile": "libs/loan-lock-pdf-template/src/index.ts",
-            "external": ["react/jsx-runtime"],
-            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-            "assets": [
-              {
-                "glob": "libs/loan-lock-pdf-template/README.md",
-                "input": ".",
-                "output": "."
-              }
-            ]
-          }
-        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
@@ -90,6 +71,28 @@
           "outputs": ["coverage/libs/loan-lock-pdf-template"],
           "options": {
             "jestConfig": "libs/loan-lock-pdf-template/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "services": {
+      "root": "libs/services",
+      "sourceRoot": "libs/services/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/services/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/services"],
+          "options": {
+            "jestConfig": "libs/services/jest.config.js",
             "passWithNoTests": true
           }
         }

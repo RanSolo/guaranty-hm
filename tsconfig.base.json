@@ -19,7 +19,9 @@
     "paths": {
       "@guaranty/loan-lock-pdf-template": [
         "libs/loan-lock-pdf-template/src/index.ts"
-      ]
+      ],
+      "@guaranty/services": ["libs/services/src/index.ts"],
+      "@guaranty/assets": ["apps/loan-lock-pdf-generator/src/assets/"]
     }
   },
   "exclude": ["node_modules", "tmp"]
